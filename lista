@@ -49,11 +49,16 @@ class Lista:
   def remover(self, valor):
     aux = self.inicio
     ant = None
-    
-    while (aux.proximo != None or aux.proximo.valor != valor):
+
+    if (aux == valor):
+      aux = aux.proximo
       
-      if (aux.proximo == valor):
+    else:
+      while (aux.proximo != valor):
         ant = aux
         aux = aux.proximo
 
-    ant = aux.proximo.proximo
+      if aux:
+        ant.proximo = aux.proximo
+      else:
+        ant.proximo = None
